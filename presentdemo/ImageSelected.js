@@ -12,6 +12,8 @@ import React, {
 
 var ImagePickerManager = require('NativeModules').ImagePickerManager;
 
+var qiniu = require('react-native-qiniu');
+
 export default class ImageSelected extends Component {
   constructor(){
     super();
@@ -20,8 +22,19 @@ export default class ImageSelected extends Component {
     }
   }
 
-  upload(path){
+  upload(){
 
+    var putPolicy = new qiniu.rs.PutPolicy2(
+        {scope:"android-release:testreactnative.jpg"}
+    );
+    var uptoken = putPolicy.token();
+    //var uptoken = "KRXNjCvmYMuc2AivStgqoM_APyEskT_AUIFSiwJS:zHU5eBW-F1jjt76BHr1sUVG7AeY=:eyJzY29wZSI6ImFuZHJvaWQtcmVsZWFzZTp0ZXN0cmVhY3RuYXRpdmUuanBnIiwiZGVhZGxpbmUiOjE0NjA0NTA5NzV9";
+
+    console.log('uptoken :\n'+uptoken);
+
+    qiniu.rpc.uploadImage(this.state.avatarSource.uri,'testreactnative.jpg',uptoken,function(resp){
+      console.log(JSON.stringify(resp));
+    });
   }
 
   select(){
@@ -72,12 +85,12 @@ export default class ImageSelected extends Component {
       }
       else {
         // You can display the image using either data:
-        const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
+        //const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
 
         //// uri (on iOS)
         //const source = {uri: response.uri.replace('file://', ''), isStatic: true};
         //// uri (on android)
-        //const source = {uri: response.uri, isStatic: true};
+        const source = {uri: response.uri, isStatic: true};
         self.setState({
           avatarSource: source
         });

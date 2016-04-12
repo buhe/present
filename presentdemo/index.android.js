@@ -27,7 +27,7 @@ class presentdemo extends Component {
           Shake or press menu button for dev menu
         </Text>
 
-        <ImageSelected />cd rea
+        <ImageSelected />
       </View>
     );
   }
