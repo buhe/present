@@ -17,18 +17,24 @@ var qiniu = require('react-native-qiniu');
 export default class ImageSelected extends Component {
   constructor() {
     super();
+    qiniu.conf.ACCESS_KEY = 'KRXNjCvmYMuc2AivStgqoM_APyEskT_AUIFSiwJS';
+    qiniu.conf.SECRET_KEY = 'oPs_4CpDqwpAZReFBZxW6i7LLl8QPbvYIsePuxAZ';
     this.state = {
       avatarSource: {uri: "http://www.kiodev.com/wp-content/uploads/2016/03/react-logo.png"},
       info: ''
     }
   }
 
+  downloadPrivate() {
+    var getPolicy = new qiniu.auth.GetPolicy();
+    let url = getPolicy.makeRequest('http://7xp19y.com2.z0.glb.qiniucdn.com/5.jpg');
+    this.setState({avatarSource:{uri:url}});
+  }
+
   imageView2() {
-    var imgInfo = new qiniu.imgOps.ImageInfo();
+    var imgInfo = new qiniu.imgOps.ImageView();
     let url = imgInfo.makeRequest('http://7xoaqn.com2.z0.glb.qiniucdn.com/16704/6806d20a359f43c88f1cb3c59980e5ef');
-    fetch(url).then((response) => {
-      return response.text();
-    });
+    this.setState({avatarSource:{uri:url}});
   }
 
   imageinfo() {
@@ -152,6 +158,9 @@ export default class ImageSelected extends Component {
           </TouchableHighlight>
           <TouchableHighlight onPress={this.rsStat.bind(this)} style={{width:100,height:50}}>
             <Text>RS stat</Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.downloadPrivate.bind(this)} style={{width:100,height:50}}>
+            <Text>Private File</Text>
           </TouchableHighlight>
         </View>
 
