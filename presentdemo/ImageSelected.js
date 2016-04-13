@@ -15,29 +15,64 @@ var ImagePickerManager = require('NativeModules').ImagePickerManager;
 var qiniu = require('react-native-qiniu');
 
 export default class ImageSelected extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      avatarSource:{uri:"http://www.kiodev.com/wp-content/uploads/2016/03/react-logo.png"}
+      avatarSource: {uri: "http://www.kiodev.com/wp-content/uploads/2016/03/react-logo.png"},
+      info: ''
     }
   }
 
-  upload(){
+  imageView2() {
+    var imgInfo = new qiniu.imgOps.ImageInfo();
+    let url = imgInfo.makeRequest('http://7xoaqn.com2.z0.glb.qiniucdn.com/16704/6806d20a359f43c88f1cb3c59980e5ef');
+    fetch(url).then((response) => {
+      return response.text();
+    });
+  }
 
-    var putPolicy = new qiniu.rs.PutPolicy2(
-        {scope:"android-release:testreactnative.jpg"}
+  imageinfo() {
+    var self = this;
+    var imgInfo = new qiniu.imgOps.ImageInfo();
+    let url = imgInfo.makeRequest('http://7xoaqn.com2.z0.glb.qiniucdn.com/16704/6806d20a359f43c88f1cb3c59980e5ef');
+    fetch(url).then((response) => {
+      return response.text();
+    }).then((responseText) => {
+      self.setState({info: responseText});
+    }).catch((error) => {
+      console.warn(error);
+    });
+  }
+
+  rsStat() {
+    var self = this;
+    qiniu.rs.Client.stat("android-release", "testreactnative.jpg")
+        .then((response) => response.text())
+        .then((responseText) => {
+          self.setState({info: responseText});
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+
+  }
+
+  upload() {
+
+    var putPolicy = new qiniu.auth.PutPolicy2(
+        {scope: "android-release:testreactnative.jpg"}
     );
     var uptoken = putPolicy.token();
     //var uptoken = "KRXNjCvmYMuc2AivStgqoM_APyEskT_AUIFSiwJS:zHU5eBW-F1jjt76BHr1sUVG7AeY=:eyJzY29wZSI6ImFuZHJvaWQtcmVsZWFzZTp0ZXN0cmVhY3RuYXRpdmUuanBnIiwiZGVhZGxpbmUiOjE0NjA0NTA5NzV9";
 
-    console.log('uptoken :\n'+uptoken);
+    console.log('uptoken :\n' + uptoken);
 
-    qiniu.rpc.uploadImage(this.state.avatarSource.uri,'testreactnative.jpg',uptoken,function(resp){
+    qiniu.rpc.uploadImage(this.state.avatarSource.uri, 'testreactnative.jpg', uptoken, function (resp) {
       console.log(JSON.stringify(resp));
     });
   }
 
-  select(){
+  select() {
     var options = {
       title: 'Select Avatar', // specify null or empty string to remove the title
       cancelButtonTitle: 'Cancel',
@@ -98,15 +133,25 @@ export default class ImageSelected extends Component {
     });
   }
 
-  render(){
+  render() {
     return (
         <View style={{width:300,height:600}}>
-          <Image source={this.state.avatarSource} style={{width:200,height:200}} />
-          <TouchableHighlight onPress={this.select.bind(this)}>
+          <Image source={this.state.avatarSource} style={{width:200,height:200}}/>
+          <Text style={{width:200,height:100}}>{this.state.info}</Text>
+          <TouchableHighlight onPress={this.select.bind(this)} style={{width:100,height:50}}>
             <Text>Select</Text>
           </TouchableHighlight>
-          <TouchableHighlight onPress={this.upload.bind(this)}>
+          <TouchableHighlight onPress={this.upload.bind(this)} style={{width:100,height:50}}>
             <Text>Upload to Qiniu</Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.imageView2.bind(this)} style={{width:100,height:50}}>
+            <Text>ImageView2</Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.imageinfo.bind(this)} style={{width:100,height:50}}>
+            <Text>ImageInfo</Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.rsStat.bind(this)} style={{width:100,height:50}}>
+            <Text>RS stat</Text>
           </TouchableHighlight>
         </View>
 
