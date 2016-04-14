@@ -32,7 +32,7 @@ export default class ImageSelected extends Component {
   }
 
   imageView2() {
-    var imgInfo = new qiniu.imgOps.ImageView();
+    var imgInfo = new qiniu.imgOps.ImageView(1,1,200);
     let url = imgInfo.makeRequest('http://7xoaqn.com2.z0.glb.qiniucdn.com/16704/6806d20a359f43c88f1cb3c59980e5ef');
     this.setState({avatarSource:{uri:url}});
   }
