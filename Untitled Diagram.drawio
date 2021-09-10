@@ -1,1 +1,19 @@
-<mxfile host="app.diagrams.net" modified="2021-09-10T08:37:49.932Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36" etag="vcGWeTFNitOaSl8aKpVh" version="15.1.4" type="github"><diagram name="Page-1" id="5f0bae14-7c28-e335-631c-24af17079c00">3ZVNb5wwEIZ/DceVAANhj93PHFJV6kZpr17wghXjQcb71V9fGw8LhETaQ6JKvaDxM/aMmfdFeGRZXbaK1uV3yJnwQj+/eGTlheE8SszTgqsDMXlwoFA8dyjowY7/YQh9pEees2a0UQMIzesxzEBKlukRo0rBebztAGLctaYFm4BdRsWU/uK5LpEGvt8nHhkvSmydxpjY0+y1UHCU2E+CZC5T0a4Mbm1KmsN5gMjaI0sFoF1UXZZM2Kl2E3PnNh9kb1dWTOp7DpB5EPssjdJDEKeRn82Iq3Ci4ohj+LHDq+prN5kTU5qbQX0TvJAGaag9sqC4Euxgei+ammZcFs82t0p78NSmV2FPfuIMg5aVtLZtsuOe2aWzhfEEWeRcGZ052CYNHO0oFweQeoc3i8y61JWw+03YKsDsi/qurpu0XWRQ8QxjQfdMLG6SLUGAMqlWNHNMK3i96R9gxw2tuLC2fmEqp5J2F8HLhlMZUBk7OXYZIJRly6BiWl3NFsySFC2CX0/UfRbn3othhKwc2DCcI6To/+JWuzeCCdALd/qi6z4whhcmQreynExY2LBDRljZMesfR03TYWKARyXemO1mCKhqo4kd6AdWQ2eR5B+LP3LhJ1ghit5YIZlaIQjfsULyCU7YXZ83V6D0rNarF/Hw+wDbcBZMzKB4k81O/6d4E6Xe0fNu8eL068Qzy/7X0eYGf2ay/gs=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-09-10T12:28:09.528Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36" etag="SR8Ix7OLcas8WmjwwC_0" version="15.1.4" type="github">
+  <diagram name="Page-1" id="5f0bae14-7c28-e335-631c-24af17079c00">
+    <mxGraphModel dx="946" dy="537" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="39150e848f15840c-3" value="OS" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
+          <mxGeometry x="380" y="410" width="240" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="39150e848f15840c-10" value="&lt;div&gt;&lt;span&gt;OS&lt;/span&gt;&lt;/div&gt;" style="shape=component;align=left;spacingLeft=36;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SyTFyoaawrEDVl7XfoG2-1" value="risc-v k210" style="shape=component;align=left;spacingLeft=36;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
